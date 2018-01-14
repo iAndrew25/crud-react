@@ -23836,6 +23836,13 @@ exports.default = function () {
 		null,
 		React.createElement(_reactRouterDom.Route, { component: function component() {
 				return React.createElement(_home2.default, null);
+			} }),
+		React.createElement(_reactRouterDom.Route, { exact: true, path: '/logout', render: function render() {
+				return React.createElement(
+					'div',
+					null,
+					'logout'
+				);
 			} })
 	);
 };
@@ -26965,7 +26972,7 @@ var _header = __webpack_require__(233);
 
 var _header2 = _interopRequireDefault(_header);
 
-var _content = __webpack_require__(234);
+var _content = __webpack_require__(235);
 
 var _content2 = _interopRequireDefault(_content);
 
@@ -27009,7 +27016,7 @@ var Home = function (_React$Component) {
 				'div',
 				null,
 				React.createElement(_header2.default, { currentPage: currentPage, handlePageChange: this.handlePageChange }),
-				React.createElement(_content2.default, null)
+				React.createElement(_content2.default, { currentPage: currentPage })
 			);
 		}
 	}]);
@@ -27036,82 +27043,55 @@ exports.default = function (_ref) {
 	    handlePageChange = _ref.handlePageChange;
 
 	return React.createElement(
-		'nav',
-		{ className: 'navbar navbar-expand-lg navbar-dark bg-primary' },
+		"nav",
+		{ className: "navbar navbar-expand-lg navbar-dark bg-primary" },
 		React.createElement(
-			'a',
-			{ className: 'navbar-brand', href: '#' },
-			'eSchool'
+			"a",
+			{ className: "navbar-brand", href: "#" },
+			"eSchool"
 		),
 		React.createElement(
-			'button',
-			{ className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarColor01', 'aria-controls': 'navbarColor01', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' },
-			React.createElement('span', { className: 'navbar-toggler-icon' })
+			"button",
+			{ className: "navbar-toggler", type: "button", "data-toggle": "collapse", "data-target": "#navbarColor01", "aria-controls": "navbarColor01", "aria-expanded": "false", "aria-label": "Toggle navigation" },
+			React.createElement("span", { className: "navbar-toggler-icon" })
 		),
 		React.createElement(
-			'div',
-			{ className: 'collapse navbar-collapse', id: 'navbarColor01' },
+			"div",
+			{ className: "collapse navbar-collapse", id: "navbarColor01" },
 			React.createElement(
-				'ul',
-				{ className: 'navbar-nav mr-auto' },
+				"ul",
+				{ className: "navbar-nav mr-auto" },
 				React.createElement(
-					'li',
+					"li",
 					{ className: (0, _classnames2.default)("nav-item", { "active": currentPage === 'STUDENTS' }), onClick: function onClick() {
 							return handlePageChange('STUDENTS');
 						} },
 					React.createElement(
-						_reactRouterDom.Link,
-						{ to: '/logout' },
-						React.createElement(
-							'a',
-							{ className: 'nav-link' },
-							'Home'
-						)
+						"a",
+						{ className: "nav-link" },
+						"Students"
 					)
 				),
 				React.createElement(
-					'li',
-					{ className: (0, _classnames2.default)("nav-item", { "active": currentPage === 'FEATURES' }), onClick: function onClick() {
-							return handlePageChange('FEATURES');
+					"li",
+					{ className: (0, _classnames2.default)("nav-item", { "active": currentPage === 'EXAMS' }), onClick: function onClick() {
+							return handlePageChange('EXAMS');
 						} },
 					React.createElement(
-						_reactRouterDom.Link,
-						{ to: '/logout' },
-						React.createElement(
-							'a',
-							{ className: 'nav-link' },
-							'Features'
-						)
+						"a",
+						{ className: "nav-link" },
+						"Exams"
 					)
 				),
 				React.createElement(
-					'li',
-					{ className: (0, _classnames2.default)("nav-item", { "active": currentPage === 'PRICING' }), onClick: function onClick() {
-							return handlePageChange('PRICING');
+					"li",
+					{ className: (0, _classnames2.default)("nav-item", { "active": currentPage === 'SET_GRADES' }), onClick: function onClick() {
+							return handlePageChange('SET_GRADES');
 						} },
 					React.createElement(
-						_reactRouterDom.Link,
-						{ to: '/logout' },
-						React.createElement(
-							'a',
-							{ className: 'nav-link' },
-							'Pricing'
-						)
-					)
-				),
-				React.createElement(
-					'li',
-					{ className: (0, _classnames2.default)("nav-item", { "active": currentPage === 'ABOUT' }), onClick: function onClick() {
-							return handlePageChange('ABOUT');
-						} },
-					React.createElement(
-						_reactRouterDom.Link,
-						{ to: '/logout' },
-						React.createElement(
-							'a',
-							{ className: 'nav-link' },
-							'About'
-						)
+						"a",
+						{ className: "nav-link" },
+						"Set grades"
 					)
 				)
 			)
@@ -27119,9 +27099,7 @@ exports.default = function (_ref) {
 	);
 };
 
-var _reactRouterDom = __webpack_require__(38);
-
-var _classnames = __webpack_require__(240);
+var _classnames = __webpack_require__(234);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -27130,6 +27108,61 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /***/ }),
 /* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2016 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				classes.push(classNames.apply(null, arg));
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+			return classNames;
+		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {
+		window.classNames = classNames;
+	}
+}());
+
+
+/***/ }),
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27141,13 +27174,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _table = __webpack_require__(235);
+var _studentsTable = __webpack_require__(242);
 
-var _table2 = _interopRequireDefault(_table);
+var _studentsTable2 = _interopRequireDefault(_studentsTable);
 
-var _backend = __webpack_require__(236);
+var _examsTable = __webpack_require__(241);
 
-var _service = __webpack_require__(237);
+var _examsTable2 = _interopRequireDefault(_examsTable);
+
+var _setStudent = __webpack_require__(244);
+
+var _setStudent2 = _interopRequireDefault(_setStudent);
+
+var _backend = __webpack_require__(237);
+
+var _service = __webpack_require__(238);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27166,16 +27207,30 @@ var Content = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this, props));
 
 		_this.getStudents = _this.getStudents.bind(_this);
-
+		_this.init = _this.init.bind(_this);
 		_this.handleRemove = _this.handleRemove.bind(_this);
+		_this.handleSetStudent = _this.handleSetStudent.bind(_this);
 		return _this;
 	}
 
 	_createClass(Content, [{
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			this.setState(Object.assign(this.state, nextProps));
+		}
+	}, {
+		key: 'init',
+		value: function init() {
+			this.setState({
+				currentPage: this.props.currentPage
+			});
+
+			this.getStudents();
+		}
+	}, {
 		key: 'componentWillMount',
 		value: function componentWillMount() {
-			this.getStudents();
-			console.log(_backend.students);
+			this.init();
 		}
 	}, {
 		key: 'getStudents',
@@ -27190,20 +27245,55 @@ var Content = function (_React$Component) {
 			console.log('Removing id:', id);
 		}
 	}, {
+		key: 'handleSetStudent',
+		value: function handleSetStudent(_ref) {
+			var idStudent = _ref.idStudent,
+			    grades = _ref.grades;
+
+			//setStudent(idStudent, grades).then(_ => this.getStudents());
+			console.log('Set id:', id);
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var students = this.state.students;
+			var _state = this.state,
+			    students = _state.students,
+			    currentPage = _state.currentPage;
 
 
 			return React.createElement(
 				'div',
 				{ className: 'container' },
-				React.createElement(
-					'h3',
-					{ className: 'text-center' },
-					'Students'
-				),
-				React.createElement(_table2.default, { students: students, handleRemove: this.handleRemove })
+				currentPage === 'STUDENTS' ? React.createElement(
+					'div',
+					null,
+					React.createElement(
+						'h3',
+						{ className: 'text-center' },
+						'Students'
+					),
+					React.createElement(_studentsTable2.default, { students: students, handleRemove: this.handleRemove })
+				) : null,
+				currentPage === 'EXAMS' ? React.createElement(
+					'div',
+					null,
+					React.createElement(
+						'h3',
+						{ className: 'text-center' },
+						'Exams'
+					),
+					React.createElement(_examsTable2.default, { exams: _backend.exams, handleRemove: this.handleRemove })
+				) : null,
+				currentPage === 'SET_GRADES' ? React.createElement(
+					'div',
+					null,
+					React.createElement(
+						'h3',
+						{ className: 'text-center' },
+						'Set grades'
+					),
+					React.createElement(_setStudent2.default, { students: students, handleSetStudent: this.handleSetStudent })
+				) : null
 			);
 		}
 	}]);
@@ -27215,7 +27305,203 @@ exports.default = Content;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 235 */
+/* 236 */,
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var students = exports.students = [{ "id": 1, "idStudent": "184782616-4", "name": "Audrey Vedenichev", "math": 2, "programming": 3, "databases": 3, "linux": 3 }, { "id": 2, "idStudent": "581253142-0", "name": "Hart Murcott", "math": 10, "programming": 9, "databases": 9, "linux": 6 }, { "id": 3, "idStudent": "030653645-5", "name": "Chadd Coal", "math": 9, "programming": 5, "databases": 7, "linux": 2 }, { "id": 4, "idStudent": "034471155-2", "name": "Obie Guiraud", "math": 6, "programming": 4, "databases": 3, "linux": 3 }, { "id": 5, "idStudent": "326943173-2", "name": "Catina Robertshaw", "math": 4, "programming": 1, "databases": 2, "linux": 5 }, { "id": 6, "idStudent": "506141936-7", "name": "Anastasie Dillestone", "math": 7, "programming": 4, "databases": 5, "linux": 3 }, { "id": 7, "idStudent": "780272598-4", "name": "Wayne Allon", "math": 6, "programming": 5, "databases": 7, "linux": 4 }, { "id": 8, "idStudent": "971713590-8", "name": "Augustine Sedworth", "math": 5, "programming": 2, "databases": 2, "linux": 7 }, { "id": 9, "idStudent": "258889665-0", "name": "Carmen Mulvaney", "math": 2, "programming": 10, "databases": 5, "linux": 6 }, { "id": 10, "idStudent": "425887146-X", "name": "Charin Poveleye", "math": 3, "programming": 3, "databases": 1, "linux": 5 }, { "id": 11, "idStudent": "412819775-0", "name": "Idalina Sallowaye", "math": 6, "programming": 2, "databases": 7, "linux": 2 }, { "id": 12, "idStudent": "868479820-1", "name": "Rennie Knudsen", "math": 3, "programming": 8, "databases": 2, "linux": 9 }, { "id": 13, "idStudent": "722063819-1", "name": "Miguela Radborne", "math": 1, "programming": 1, "databases": 10, "linux": 5 }, { "id": 14, "idStudent": "594642932-9", "name": "Hymie Chetwind", "math": 9, "programming": 2, "databases": 10, "linux": 2 }, { "id": 15, "idStudent": "844249564-9", "name": "Agretha Simionato", "math": 9, "programming": 2, "databases": 9, "linux": 2 }, { "id": 16, "idStudent": "703406365-6", "name": "Jonah Treweek", "math": 10, "programming": 6, "databases": 10, "linux": 7 }, { "id": 17, "idStudent": "207810124-9", "name": "Bondon Bleibaum", "math": 4, "programming": 5, "databases": 9, "linux": 4 }, { "id": 18, "idStudent": "247382222-0", "name": "Denys Wharmby", "math": 5, "programming": 5, "databases": 8, "linux": 6 }, { "id": 19, "idStudent": "689681020-3", "name": "Alyss Schimpke", "math": 7, "programming": 5, "databases": 3, "linux": 10 }, { "id": 20, "idStudent": "695785965-7", "name": "Laverne Vasyutin", "math": 9, "programming": 1, "databases": 3, "linux": 6 }];
+
+var exams = exports.exams = [{ "id": 1, "name": "Health Care", "subject": "Rubus fecundus L.H. Bailey", "exam_date": "11/15/2017" }, { "id": 2, "name": "Energy", "subject": "Castilleja mollis Pennell", "exam_date": "07/14/2017" }, { "id": 3, "name": "Technology", "subject": "Acarospora sparsa H. Magn.", "exam_date": "11/13/2017" }, { "id": 4, "name": "Basic Industries", "subject": "Cyrtandra grayana Hillebr.", "exam_date": "01/01/2018" }, { "id": 5, "name": "Public Utilities", "subject": "Harmonia guggolziorum B.G. Baldw.", "exam_date": "04/09/2017" }, { "id": 6, "name": "Public Utilities", "subject": "Oenothera wolfii (Munz) P.H. Raven, W. Dietr. & Stubbe", "exam_date": "02/14/2017" }, { "id": 7, "name": "Consumer Services", "subject": "Solanum lycopersicum L. var. lycopersicum", "exam_date": "09/04/2017" }, { "id": 8, "name": "Finance", "subject": "Cryptantha nevadensis A. Nelson & Kennedy", "exam_date": "08/26/2017" }, { "id": 9, "name": "Finance", "subject": "Lupinus caespitosus Nutt. var. utahensis (S. Watson) Cox", "exam_date": "05/19/2017" }, { "id": 10, "name": "Consumer Non-Durables", "subject": "Calylophus berlandieri Spach ssp. berlandieri", "exam_date": "05/20/2017" }, { "id": 11, "name": "n/a", "subject": "Phacelia Juss.", "exam_date": "09/30/2017" }, { "id": 12, "name": "Basic Industries", "subject": "Arabis sparsiflora Nutt. var. sparsiflora", "exam_date": "12/14/2017" }, { "id": 13, "name": "Technology", "subject": "Clarkia borealis E. Small ssp. borealis", "exam_date": "07/26/2017" }, { "id": 14, "name": "Finance", "subject": "Polygala chapmanii Torr. & A. Gray", "exam_date": "09/13/2017" }, { "id": 15, "name": "Consumer Non-Durables", "subject": "Thelocarpon Nyl. ex Hue", "exam_date": "03/06/2017" }, { "id": 16, "name": "n/a", "subject": "Biatorella floridensis H. Magn.", "exam_date": "01/24/2017" }, { "id": 17, "name": "Energy", "subject": "Trematolobelia kaalae (O. Deg.) Lammers", "exam_date": "01/24/2017" }, { "id": 18, "name": "Health Care", "subject": "Arctomia Th. Fr.", "exam_date": "01/07/2018" }, { "id": 19, "name": "Health Care", "subject": "Ditrichum zonatum (Brid.) Kindb.", "exam_date": "01/14/2017" }, { "id": 20, "name": "Consumer Services", "subject": "Maxillaria coccinea (Jacq.) L.O. Williams ex Hodge", "exam_date": "01/01/2018" }];
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.getStudents = getStudents;
+exports.setStudent = setStudent;
+exports.removeStudent = removeStudent;
+
+var _fetch = __webpack_require__(239);
+
+var _fetch2 = _interopRequireDefault(_fetch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getStudents() {
+	return (0, _fetch2.default)('/students', {
+		method: 'GET'
+	});
+}
+
+function setStudent(id, grades) {
+	return (0, _fetch2.default)('/students/' + id, {
+		method: 'PUT',
+		body: JSON.stringify(grades)
+	});
+}
+
+function removeStudent(id) {
+	return (0, _fetch2.default)('/users/login', {
+		method: 'DELETE',
+		body: JSON.stringify({ id: id })
+	});
+}
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+exports.default = function (url, options) {
+	return fetch('' + _config.API_URL + url, Object.assign({}, { headers: { 'Content-Type': 'application/json' } }, options)).then(function (b) {
+		return b.json();
+	});
+};
+
+var _config = __webpack_require__(240);
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var API_URL = exports.API_URL = 'http://localhost:3000/api';
+var APP_URL = exports.APP_URL = 'http://localhost:3000/';
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(React) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+exports.default = function (_ref) {
+	var exams = _ref.exams,
+	    handleRemove = _ref.handleRemove;
+
+	return React.createElement(
+		"table",
+		{ className: "table table-hover" },
+		React.createElement(
+			"thead",
+			null,
+			React.createElement(
+				"tr",
+				null,
+				React.createElement(
+					"th",
+					{ scope: "col" },
+					"ID"
+				),
+				React.createElement(
+					"th",
+					{ scope: "col" },
+					"Name"
+				),
+				React.createElement(
+					"th",
+					{ scope: "col" },
+					"Subject"
+				),
+				React.createElement(
+					"th",
+					{ scope: "col" },
+					"Date"
+				),
+				React.createElement(
+					"th",
+					{ scope: "col", colspan: "2" },
+					"Actions"
+				)
+			)
+		),
+		React.createElement(
+			"tbody",
+			null,
+			exams.map(function (_ref2) {
+				var id = _ref2.id,
+				    name = _ref2.name,
+				    subject = _ref2.subject,
+				    exam_date = _ref2.exam_date;
+				return React.createElement(
+					"tr",
+					{ key: id },
+					React.createElement(
+						"th",
+						null,
+						id
+					),
+					React.createElement(
+						"td",
+						null,
+						name
+					),
+					React.createElement(
+						"td",
+						null,
+						subject
+					),
+					React.createElement(
+						"td",
+						null,
+						exam_date
+					),
+					React.createElement(
+						"td",
+						null,
+						React.createElement(
+							"button",
+							{ type: "button", className: "btn btn-info btn-sm", style: { marginRight: "5px" }, onClick: function onClick() {
+									return handleRemove(id);
+								} },
+							"Edit"
+						),
+						React.createElement(
+							"button",
+							{ type: "button", className: "btn btn-danger btn-sm", onClick: function onClick() {
+									return handleRemove(id);
+								} },
+							"Remove"
+						)
+					)
+				);
+			})
+		)
+	);
+};
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+
+/***/ }),
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27270,7 +27556,7 @@ exports.default = function (_ref) {
 				),
 				React.createElement(
 					"th",
-					{ scope: "col", colspan: "2" },
+					{ scope: "col", colSpan: "2" },
 					"Actions"
 				)
 			)
@@ -27347,135 +27633,193 @@ exports.default = function (_ref) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 236 */
+/* 243 */,
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var students = exports.students = [{ "id": 1, "idStudent": "184782616-4", "name": "Audrey Vedenichev", "math": 2, "programming": 3, "databases": 3, "linux": 3 }, { "id": 2, "idStudent": "581253142-0", "name": "Hart Murcott", "math": 10, "programming": 9, "databases": 9, "linux": 6 }, { "id": 3, "idStudent": "030653645-5", "name": "Chadd Coal", "math": 9, "programming": 5, "databases": 7, "linux": 2 }, { "id": 4, "idStudent": "034471155-2", "name": "Obie Guiraud", "math": 6, "programming": 4, "databases": 3, "linux": 3 }, { "id": 5, "idStudent": "326943173-2", "name": "Catina Robertshaw", "math": 4, "programming": 1, "databases": 2, "linux": 5 }, { "id": 6, "idStudent": "506141936-7", "name": "Anastasie Dillestone", "math": 7, "programming": 4, "databases": 5, "linux": 3 }, { "id": 7, "idStudent": "780272598-4", "name": "Wayne Allon", "math": 6, "programming": 5, "databases": 7, "linux": 4 }, { "id": 8, "idStudent": "971713590-8", "name": "Augustine Sedworth", "math": 5, "programming": 2, "databases": 2, "linux": 7 }, { "id": 9, "idStudent": "258889665-0", "name": "Carmen Mulvaney", "math": 2, "programming": 10, "databases": 5, "linux": 6 }, { "id": 10, "idStudent": "425887146-X", "name": "Charin Poveleye", "math": 3, "programming": 3, "databases": 1, "linux": 5 }, { "id": 11, "idStudent": "412819775-0", "name": "Idalina Sallowaye", "math": 6, "programming": 2, "databases": 7, "linux": 2 }, { "id": 12, "idStudent": "868479820-1", "name": "Rennie Knudsen", "math": 3, "programming": 8, "databases": 2, "linux": 9 }, { "id": 13, "idStudent": "722063819-1", "name": "Miguela Radborne", "math": 1, "programming": 1, "databases": 10, "linux": 5 }, { "id": 14, "idStudent": "594642932-9", "name": "Hymie Chetwind", "math": 9, "programming": 2, "databases": 10, "linux": 2 }, { "id": 15, "idStudent": "844249564-9", "name": "Agretha Simionato", "math": 9, "programming": 2, "databases": 9, "linux": 2 }, { "id": 16, "idStudent": "703406365-6", "name": "Jonah Treweek", "math": 10, "programming": 6, "databases": 10, "linux": 7 }, { "id": 17, "idStudent": "207810124-9", "name": "Bondon Bleibaum", "math": 4, "programming": 5, "databases": 9, "linux": 4 }, { "id": 18, "idStudent": "247382222-0", "name": "Denys Wharmby", "math": 5, "programming": 5, "databases": 8, "linux": 6 }, { "id": 19, "idStudent": "689681020-3", "name": "Alyss Schimpke", "math": 7, "programming": 5, "databases": 3, "linux": 10 }, { "id": 20, "idStudent": "695785965-7", "name": "Laverne Vasyutin", "math": 9, "programming": 1, "databases": 3, "linux": 6 }];
-
-/***/ }),
-/* 237 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.getStudents = getStudents;
-exports.removeStudent = removeStudent;
-
-var _fetch = __webpack_require__(238);
-
-var _fetch2 = _interopRequireDefault(_fetch);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function getStudents() {
-	return (0, _fetch2.default)('/students', {
-		method: 'GET'
-	});
-}
-
-function removeStudent(id) {
-	return (0, _fetch2.default)('/users/login', {
-		method: 'DELETE',
-		body: JSON.stringify({ id: id })
-	});
-}
-
-/***/ }),
-/* 238 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+/* WEBPACK VAR INJECTION */(function(React) {
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-exports.default = function (url, options) {
-	return fetch('' + _config.API_URL + url, Object.assign({}, { headers: { 'Content-Type': 'application/json' } }, options)).then(function (b) {
-		return b.json();
-	});
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _config = __webpack_require__(239);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/***/ }),
-/* 239 */
-/***/ (function(module, exports, __webpack_require__) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-"use strict";
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var API_URL = exports.API_URL = 'http://localhost:3000/api';
-var APP_URL = exports.APP_URL = 'http://localhost:3000/';
+var SetStudent = function (_React$Component) {
+	_inherits(SetStudent, _React$Component);
 
-/***/ }),
-/* 240 */
-/***/ (function(module, exports, __webpack_require__) {
+	function SetStudent(props) {
+		_classCallCheck(this, SetStudent);
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-  Copyright (c) 2016 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
+		var _this = _possibleConstructorReturn(this, (SetStudent.__proto__ || Object.getPrototypeOf(SetStudent)).call(this, props));
 
-(function () {
-	'use strict';
+		_this.state = {};
+		_this.handleChange = _this.handleChange.bind(_this);
+		_this.handleGrades = _this.handleGrades.bind(_this);
+		return _this;
+	}
 
-	var hasOwn = {}.hasOwnProperty;
+	_createClass(SetStudent, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			var students = this.props.students;
 
-	function classNames () {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(null, arg));
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
-					}
-				}
-			}
+			this.setState({ students: students });
 		}
+	}, {
+		key: "componentWillReceiveProps",
+		value: function componentWillReceiveProps(nextProps) {
+			this.setState(Object.assign(this.state, nextProps));
+		}
+	}, {
+		key: "handleChange",
+		value: function handleChange(key, value) {
+			this.setState(_defineProperty({}, key, value));
+		}
+	}, {
+		key: "handleGrades",
+		value: function handleGrades() {
+			var _state = this.state,
+			    idStudent = _state.idStudent,
+			    math = _state.math,
+			    prog = _state.prog,
+			    db = _state.db,
+			    linux = _state.linux;
 
-		return classes.join(' ');
-	}
 
-	if (typeof module !== 'undefined' && module.exports) {
-		module.exports = classNames;
-	} else if (true) {
-		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-			return classNames;
-		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else {
-		window.classNames = classNames;
-	}
-}());
+			this.props.handleSetStudent({
+				idStudent: idStudent,
+				grades: {
+					math: math, prog: prog, db: db, linux: linux
+				}
+			});
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			var _this2 = this;
 
+			var students = this.state.students;
+
+
+			return React.createElement(
+				"div",
+				null,
+				React.createElement(
+					"div",
+					null,
+					React.createElement(
+						"label",
+						null,
+						"Student name:"
+					),
+					React.createElement("br", null),
+					React.createElement(
+						"select",
+						{ onChange: function onChange(e) {
+								return _this2.handleChange('idStudent', e.target.value);
+							} },
+						React.createElement(
+							"option",
+							{ value: "" },
+							"Select a student..."
+						),
+						this.props.students.map(function (_ref) {
+							var idStudent = _ref.idStudent,
+							    name = _ref.name;
+							return React.createElement(
+								"option",
+								{ value: idStudent },
+								name
+							);
+						})
+					)
+				),
+				React.createElement("br", null),
+				React.createElement(
+					"div",
+					null,
+					React.createElement(
+						"label",
+						null,
+						"Math:"
+					),
+					React.createElement("br", null),
+					React.createElement("input", { type: "text", value: this.state.math, onChange: function onChange(e) {
+							return _this2.handleChange('math', e.target.value);
+						} })
+				),
+				React.createElement("br", null),
+				React.createElement(
+					"div",
+					null,
+					React.createElement(
+						"label",
+						null,
+						"Prog:"
+					),
+					React.createElement("br", null),
+					React.createElement("input", { type: "text", value: this.state.prog, onChange: function onChange(e) {
+							return _this2.handleChange('prog', e.target.value);
+						} })
+				),
+				React.createElement("br", null),
+				React.createElement(
+					"div",
+					null,
+					React.createElement(
+						"label",
+						null,
+						"DB:"
+					),
+					React.createElement("br", null),
+					React.createElement("input", { type: "text", value: this.state.db, onChange: function onChange(e) {
+							return _this2.handleChange('db', e.target.value);
+						} })
+				),
+				React.createElement("br", null),
+				React.createElement(
+					"div",
+					null,
+					React.createElement(
+						"label",
+						null,
+						"Linux:"
+					),
+					React.createElement("br", null),
+					React.createElement("input", { type: "text", value: this.state.linux, onChange: function onChange(e) {
+							return _this2.handleChange('linux', e.target.value);
+						} })
+				),
+				React.createElement("br", null),
+				React.createElement(
+					"div",
+					null,
+					React.createElement(
+						"button",
+						{ onClick: this.handleGrades },
+						"Set Grades"
+					)
+				)
+			);
+		}
+	}]);
+
+	return SetStudent;
+}(React.Component);
+
+exports.default = SetStudent;
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ })
 /******/ ]);

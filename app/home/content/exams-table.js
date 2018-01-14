@@ -1,26 +1,22 @@
-export default function({students, handleRemove}) {
+export default function({exams, handleRemove}) {
 	return(
 		<table className="table table-hover">
 			<thead>
 				<tr>
 					<th scope="col">ID</th>
 					<th scope="col">Name</th>
-					<th scope="col">Math</th>
-					<th scope="col">Prog</th>
-					<th scope="col">DB</th>
-					<th scope="col">Linux</th>
+					<th scope="col">Subject</th>
+					<th scope="col">Date</th>
 					<th scope="col" colspan="2">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-				{students.map(({id, idStudent, name, math, programming, databases, linux}) => (
+				{exams.map(({id, name, subject, exam_date}) => (
 					<tr key={id}>
-						<th>{idStudent}</th>
+						<th>{id}</th>
 						<td>{name}</td>
-						<td>{math}</td>
-						<td>{programming}</td>
-						<td>{databases}</td>
-						<td>{linux}</td>
+						<td>{subject}</td>
+						<td>{exam_date}</td>
 						<td>
 							<button type="button" className="btn btn-info btn-sm" style={{marginRight: "5px"}} onClick={() => handleRemove(id)}>Edit</button>
 							<button type="button" className="btn btn-danger btn-sm" onClick={() => handleRemove(id)}>Remove</button>

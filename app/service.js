@@ -6,6 +6,14 @@ export function getStudents() {
 	})
 }
 
+export function setStudent(id, grades) {
+	return fetch(`/students/${id}`, {
+		method: 'PUT',
+		body: JSON.stringify(grades)
+	})
+}
+
+
 export function removeStudent(id) {
 	return fetch(`/users/login`, {
 		method: 'DELETE',

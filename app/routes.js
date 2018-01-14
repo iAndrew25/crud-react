@@ -7,6 +7,7 @@ export default function() {
 		<Switch>
 			{/*<Route exact path='/' render={() => <Home />}/>*/}
 			<Route component={() => (<Home />)}/>
+			<Route exact path='/logout' render={() => <div>logout</div>}/>
 		</Switch>
 	)
 }

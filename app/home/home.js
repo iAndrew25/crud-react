@@ -23,7 +23,7 @@ export default class Home extends React.Component {
 		return(
 			<div>
 				<Header currentPage={currentPage} handlePageChange={this.handlePageChange} />
-				<Content />
+				<Content currentPage={currentPage} />
 			</div>
 		)
 	}

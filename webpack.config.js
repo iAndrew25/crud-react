@@ -1,6 +1,7 @@
 const webpack = require('webpack'),
 	path = require('path'),
-	ReactRootPlugin = require('html-webpack-react-root-plugin');
+	ReactRootPlugin = require('html-webpack-react-root-plugin'),
+	OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
 	entry: './index.js',
@@ -29,6 +30,6 @@ module.exports = {
 		new webpack.LoaderOptionsPlugin({
 			minimize: true,
 			debug: true
-		}),
+		})
 	],
 }
