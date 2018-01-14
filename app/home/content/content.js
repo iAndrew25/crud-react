@@ -30,6 +30,11 @@ export default class Content extends React.Component {
 		this.init();		
 	}
 
+	getExams() {
+		//getExams().then(exams => this.setState({exams}));
+		this.setState({exams});
+	}
+
 	getStudents() {
 		//getStudents().then(students => this.setState({students}));
 		this.setState({students});
@@ -47,7 +52,7 @@ export default class Content extends React.Component {
 
 
 	render() {
-		let {students, currentPage} = this.state;
+		let {students, exams, currentPage} = this.state;
 
 		return (
 			<div className="container">
