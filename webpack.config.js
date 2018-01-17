@@ -1,13 +1,17 @@
 const webpack = require('webpack'),
 	path = require('path'),
-	ReactRootPlugin = require('html-webpack-react-root-plugin'),
-	OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+	ReactRootPlugin = require('html-webpack-react-root-plugin');
 
 module.exports = {
 	entry: './index.js',
 	output: {
 		path: path.resolve(__dirname, 'build'),
 		filename: 'script.js'
+	},
+	devServer: {
+		contentBase: path.join(__dirname, "build"),
+		compress: true,
+		port: 9000
 	},
 	watch: true,
 	module: {

@@ -16,8 +16,11 @@ export default function({currentPage, handlePageChange}) {
 					<li className={classNames("nav-item", {"active": currentPage === 'EXAMS'})} onClick={() => handlePageChange('EXAMS')}>
 						<a className="nav-link">Exams</a>
 					</li>
-					<li className={classNames("nav-item", {"active": currentPage === 'SET_GRADES'})} onClick={() => handlePageChange('SET_GRADES')}>
-						<a className="nav-link">Set grades</a>
+					<li className={classNames("nav-item", {"active": currentPage === 'ADD_EXAM'})} onClick={() => handlePageChange('ADD_EXAM')}>
+						<a className="nav-link">Add exam</a>
+					</li>
+					<li className={classNames("nav-item", {"active": currentPage === 'UPDATE_STUDENT'})} onClick={() => handlePageChange('UPDATE_STUDENT')}>
+						<a className="nav-link">Update student</a>
 					</li>
 				</ul>
 			</div>

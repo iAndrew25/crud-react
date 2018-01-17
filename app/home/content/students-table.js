@@ -13,16 +13,15 @@ export default function({students, handleRemove}) {
 				</tr>
 			</thead>
 			<tbody>
-				{students.map(({id, idStudent, name, math, programming, databases, linux}) => (
+				{students.map(({id, name, math, prog, db, linux}) => (
 					<tr key={id}>
-						<th>{idStudent}</th>
+						<th>{id}</th>
 						<td>{name}</td>
 						<td>{math}</td>
-						<td>{programming}</td>
-						<td>{databases}</td>
+						<td>{prog}</td>
+						<td>{db}</td>
 						<td>{linux}</td>
 						<td>
-							<button type="button" className="btn btn-info btn-sm" style={{marginRight: "5px"}} onClick={() => handleRemove(id)}>Edit</button>
 							<button type="button" className="btn btn-danger btn-sm" onClick={() => handleRemove(id)}>Remove</button>
 						</td>
 					</tr>

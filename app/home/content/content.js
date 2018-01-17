@@ -1,8 +1,9 @@
 import StudentsTable from './students-table';
 import ExamsTable from './exams-table';
 import SetStudent from './set-student';
-import {students, exams} from './../../backend';
-import {getStudents, setStudent, removeStudent} from './../../service';
+import AddExam from './add-exam';
+import {students} from './../../backend';
+import {getStudents, getExams, setStudent, addExam, removeExam, removeStudent} from './../../service';
 
 export default class Content extends React.Component {
 	constructor(props) {
@@ -10,8 +11,10 @@ export default class Content extends React.Component {
 
 		this.getStudents = this.getStudents.bind(this);
 		this.init = this.init.bind(this);
-		this.handleRemove = this.handleRemove.bind(this);
-		this.handleSetStudent = this.handleSetStudent.bind(this);
+		this.handleAddExam = this.handleAddExam.bind(this);
+		this.setStudents = this.setStudents.bind(this);
+		this.handleStudentRemove = this.handleStudentRemove.bind(this);
+		this.handleExamRemove = this.handleExamRemove.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -24,6 +27,7 @@ export default class Content extends React.Component {
 		})
 
 		this.getStudents();
+		this.getExams();
 	}
 
 	componentWillMount() {
@@ -31,42 +35,50 @@ export default class Content extends React.Component {
 	}
 
 	getExams() {
-		//getExams().then(exams => this.setState({exams}));
-		this.setState({exams});
+		getExams().then(exams => this.setState({exams, currentPage: 'EXAMS'}));
+	}
+
+	handleExamRemove(id) {
+		removeExam(id).then(_ => this.getExams());
+	}
+
+	handleAddExam(exam) {
+		addExam(exam).then(_ => this.getExams());
 	}
 
 	getStudents() {
-		//getStudents().then(students => this.setState({students}));
-		this.setState({students});
+		getStudents().then(students => this.setState({students, currentPage: 'STUDENTS'}));
 	}
 
-	handleRemove(id) {
-		//removeStudent().then(_ => this.getStudents());
-		console.log('Removing id:', id);
+	setStudents(student) {
+		setStudent(student).then(_ => this.getStudents());
+
 	}
 
-	handleSetStudent({idStudent, grades}) {
-		//setStudent(idStudent, grades).then(_ => this.getStudents());
-		console.log('Set id:', id);
+	handleStudentRemove(id) {
+		removeStudent(id).then(_ => this.getStudents());
 	}
-
 
 	render() {
-		let {students, exams, currentPage} = this.state;
+		let {students = [], exams = [], currentPage} = this.state;
 
 		return (
 			<div className="container">
 				{currentPage === 'STUDENTS' ? <div>
 					<h3 className="text-center">Students</h3>
-					<StudentsTable students={students} handleRemove={this.handleRemove} />
+					<StudentsTable students={students} handleRemove={this.handleStudentRemove} />
 				</div> : null}
-				{currentPage === 'EXAMS' ?<div>
+				{currentPage === 'EXAMS' ? <div>
 					<h3 className="text-center">Exams</h3>
-					<ExamsTable exams={exams} handleRemove={this.handleRemove} />
+					<ExamsTable exams={exams} handleRemove={this.handleExamRemove} />
 				</div> : null}
-				{currentPage === 'SET_GRADES' ?<div>
-					<h3 className="text-center">Set grades</h3>
-					<SetStudent students={students} handleSetStudent={this.handleSetStudent} />
+				{currentPage === 'ADD_EXAM' ? <div>
+					<h3 className="text-center">Add exam</h3>
+					<AddExam exams={exams} handleAddExam={this.handleAddExam} />
+				</div> : null}
+				{currentPage === 'UPDATE_STUDENT' ? <div>
+					<h3 className="text-center">Update student</h3>
+					<SetStudent students={students} handleSetStudent={this.setStudents} />
 				</div> : null}
 			</div>
 		);		

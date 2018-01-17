@@ -13,7 +13,6 @@ export default class Home extends React.Component {
 	}
 
 	handlePageChange(currentPage) {
-		console.log(currentPage);
 		this.setState({currentPage});
 	}
 

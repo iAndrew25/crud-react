@@ -23,14 +23,18 @@ export default class SetStudent extends React.Component {
 	}
 
 	handleGrades() {
-		let {idStudent, math, prog, db, linux} = this.state;
+		let {math, prog, db, linux, id, students} = this.state;
+		let name = students.find(stud => stud.id == id).name;
+		let payload = {
+			math,
+			prog,
+			db,
+			linux, 
+			id,
+			name
+		}
 
-		this.props.handleSetStudent({
-			idStudent,
-			grades: {
-				math, prog, db, linux
-			}
-		})
+		this.props.handleSetStudent(payload);
 	}
 
 	render() {
@@ -40,9 +44,9 @@ export default class SetStudent extends React.Component {
 			<div>
 				<div>
 					<label>Student name:</label><br />
-					<select onChange={(e) => this.handleChange('idStudent', e.target.value)}>
+					<select onChange={(e) => this.handleChange('id', e.target.value)}>
 						<option value="">Select a student...</option>
-						{this.props.students.map(({idStudent, name}) => <option value={idStudent}>{name}</option>)}
+						{this.props.students.map(({id, name}) => <option value={id}>{name}</option>)}
 					</select>
 				</div><br />
 				<div>
